@@ -2,7 +2,7 @@
 
 ##Install
 
-	npm install reactview
+	npm install -g reactview
 
 ###Usage
 
@@ -31,5 +31,5 @@ Currently, you do need to call React.render in your component.
 
 ###Todos
 
-	I'd like to add a way to inject props into the component from the command line and abstract the React.render away from the component.
-	Feel free to send a pull request.
+I'd like to add a way to inject props into the component from the command line and abstract the React.render away from the component.
+Feel free to send a pull request.

@@ -4,6 +4,7 @@
 var http = require('http')
 var url = require('url')
 var fs = require('fs')
+var open = require("open");
 
 var webpack = require('webpack')
 var React = require('react')
@@ -15,8 +16,11 @@ class ReactView{
 		var componentPath = process.cwd()
 		var componentName = process.argv[2]
 		var fullPath = componentPath + '/' + componentName
+
+		this.port = process.argv[3] || 1337
 		this.fullPath = fullPath
 		this.bundle = __dirname + "/component/bundle.js"
+
 		this.compiler = webpack({
 		  entry: fullPath,
 		  output: {
@@ -79,8 +83,8 @@ class ReactView{
 				res.writeHead(200, {'Content-Type': 'text/html; charset=UTF-8'});
 				res.end('<html><head><title>React View</title></head><body><script src="/bundle.js"></script></body></html>')
 			}
-		}.bind(this)).listen(1337);
-		console.log('server started at localhost:1337!')
+		}.bind(this)).listen(this.port);
+		open('http://localhost:'+ this.port);
 	}
 }
 new ReactView()

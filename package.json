@@ -1,0 +1,21 @@
+{
+  "name": "reactloader",
+  "version": "0.0.1",
+  "description": "quickly preview a react component in your browser",
+  "main": "bin/index.js",
+  "bin": {
+    "reactloader": "bin/reactloader.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Zach Silveira",
+  "license": "ISC",
+  "dependencies": {
+    "babel-core": "^5.2.17",
+    "babel-loader": "^5.0.0",
+    "node-libs-browser": "^0.5.0",
+    "react": "^0.13.3",
+    "webpack": "^1.9.5"
+  }
+}

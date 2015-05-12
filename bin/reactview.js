@@ -85,6 +85,7 @@ class ReactView{
 			}
 		}.bind(this)).listen(this.port);
 		open('http://localhost:'+ this.port);
+		console.log('running!')
 	}
 }
 new ReactView()

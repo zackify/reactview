@@ -11,7 +11,8 @@ Instead of setting up webpack to convert ES6 features or setup a server, it's as
 
     reactview component.jsx
 
-It'll automagically compile it using webpack and babel, then throw up a server where you can view your component.
+It'll automagically compile it using webpack and babel, then start a server and open your browser.
+Optionally, you can specify the port as the second argument: `reactview component.jsx 8000`
 
 ###Example
 
@@ -31,5 +32,6 @@ Currently, you do need to call React.render in your component.
 
 ###Todos
 
-I'd like to add a way to inject props into the component from the command line and abstract the React.render away from the component.
-Feel free to send a pull request.
+- remove the need for React.render in your component
+- add in hot reloading
+- whatever you send in a pull request

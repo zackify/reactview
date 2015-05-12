@@ -62,16 +62,16 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var Woah = (function (_React$component) {
+	var Woah = (function (_React$Component) {
 		function Woah() {
 			_classCallCheck(this, Woah);
 
-			if (_React$component != null) {
-				_React$component.apply(this, arguments);
+			if (_React$Component != null) {
+				_React$Component.apply(this, arguments);
 			}
 		}
 
-		_inherits(Woah, _React$component);
+		_inherits(Woah, _React$Component);
 
 		_createClass(Woah, [{
 			key: 'render',
@@ -85,7 +85,7 @@
 		}]);
 
 		return Woah;
-	})(_react2['default'].component);
+	})(_react2['default'].Component);
 
 	exports['default'] = Woah;
 

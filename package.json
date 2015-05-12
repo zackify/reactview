@@ -4,7 +4,7 @@
   "description": "quickly preview a react component in your browser",
   "main": "bin/index.js",
   "bin": {
-    "reactloader": "bin/reactloader.js"
+    "reactview": "bin/reactloader.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

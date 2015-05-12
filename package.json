@@ -1,10 +1,10 @@
 {
-  "name": "reactloader",
+  "name": "reactview",
   "version": "0.0.1",
   "description": "quickly preview a react component in your browser",
   "main": "bin/index.js",
   "bin": {
-    "reactview": "bin/reactloader.js"
+    "reactview": "bin/reactview.js"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

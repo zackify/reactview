@@ -16,11 +16,11 @@ class ReactView{
 		var componentName = process.argv[2]
 		var fullPath = componentPath + '/' + componentName
 		this.fullPath = fullPath
-		this.bundle = __dirname + "/dist/bundle.js"
+		this.bundle = __dirname + "/component/bundle.js"
 		this.compiler = webpack({
 		  entry: fullPath,
 		  output: {
-		       path: __dirname + "/dist",
+		       path: __dirname + "/component",
 		       filename: "bundle.js"
 		  },
 		  module: {

@@ -3,6 +3,10 @@
   "version": "0.0.1",
   "description": "quickly preview a react component in your browser",
   "main": "bin/index.js",
+  "repository" :{ 
+    "type" : "git",
+    "url" : "https://github.com/zackify/reactview"
+  },
   "bin": {
     "reactview": "bin/reactview.js"
   },

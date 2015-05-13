@@ -26,12 +26,9 @@ The example component looks like:
 			}
 		}
 
-		React.render(<Woah/>,document.body)
-
-Currently, you do need to call React.render in your component.
-
+No need to add React.render either! But if you have it in there, it'll be replaced to mount on the body.
 ###Todos
 
-- remove the need for React.render in your component
+- ~~remove the need for React.render in your component~~ done!
 - add in hot reloading
 - whatever you send in a pull request

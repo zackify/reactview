@@ -35,6 +35,10 @@ class ReactView{
 		          {
 		              test: /\.jsx$/,
 		              loader: 'babel-loader'
+		          },
+		          {
+		              test: /\.jsx$/,
+		              loader: 'render-placement-loader'
 		          }
 
 		      ]

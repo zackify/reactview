@@ -1,6 +1,6 @@
 {
   "name": "reactview",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "quickly preview a react component in your browser",
   "main": "bin/index.js",
   "keywords": [
@@ -26,6 +26,7 @@
     "node-libs-browser": "^0.5.0",
     "open": "0.0.5",
     "react": "^0.13.3",
+    "render-placement-loader": "^1.0.0",
     "webpack": "^1.9.5"
   }
 }

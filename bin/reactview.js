@@ -34,7 +34,7 @@ class ReactView{
 		      loaders: [
 		          {
 		              test: /\.jsx$/,
-		              loader: 'babel-loader'
+		              loader: 'babel-loader?stage=0'
 		          },
 		          {
 		              test: /\.jsx$/,

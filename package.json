@@ -1,6 +1,6 @@
 {
   "name": "reactview",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "quickly preview a react component in your browser",
   "main": "bin/index.js",
   "keywords": [

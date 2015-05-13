@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 'use strict'
 
 var http = require('http')
@@ -8,6 +9,7 @@ var open = require("open");
 
 var webpack = require('webpack')
 var React = require('react')
+
 
 class ReactView{
 
@@ -22,6 +24,7 @@ class ReactView{
 		this.bundle = __dirname + "/component/bundle.js"
 
 		this.compiler = webpack({
+			context: __dirname,
 		  entry: fullPath,
 		  output: {
 		       path: __dirname + "/component",

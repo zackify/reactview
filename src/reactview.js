@@ -2,18 +2,32 @@
 
 'use strict'
 
+var concat = require('concat-stream');
 var http = require('http')
 var url = require('url')
 var fs = require('fs')
+var tty = require('tty');
 var open = require("open");
 
 var webpack = require('webpack')
 var React = require('react')
 
+function getPropsFromStdin (cb) {
+  if (tty.isatty(process.stdin)) return cb(null, {})
+
+  process.stdin.pipe(concat(raw => {
+    try {
+      cb(null, JSON.parse(raw))
+    }
+    catch (e) {
+      cb(e)
+    }
+  }))
+}
 
 class ReactView{
 
-  constructor(){
+  constructor(props={}){
     var componentPath = process.cwd()
     var componentName = process.argv[2]
     var fullPath = `${componentPath}/${componentName}`
@@ -37,7 +51,8 @@ class ReactView{
               },
               {
                   test: /\.jsx$/,
-                  loader: 'render-placement-loader'
+                  loader: 'render-placement-loader',
+                  query: { props: props }
               },
               { 
                 test: /\.css$/,
@@ -98,4 +113,8 @@ class ReactView{
     console.log('running!')
   }
 }
-new ReactView()
+
+getPropsFromStdin((err, props) => {
+  if (err) throw err
+  new ReactView(props)
+});

@@ -16,13 +16,17 @@
 
 ###Usage
 
-This is the perfect tool for prototyping React components. 
+This is the perfect tool for prototyping React components.
 Instead of setting up webpack to convert ES6 features or setup a server, it's as easy as:
 
 		reactview component.jsx
 
 It'll automagically compile it using webpack and babel, then start a server and open your browser.
 Optionally, you can specify the port as the second argument: `reactview component.jsx 8000`
+
+It will also read json from stdin and pass them in as component props, eg:
+
+		cat props.json | reactview example.jsx
 
 ###Example
 
@@ -41,7 +45,7 @@ No need to add React.render. CSS importing is also included.
 
 ##Contributing
 
-To modify reactview, take a look at src/reactview.js. After making changes you'll need to do 
+To modify reactview, take a look at src/reactview.js. After making changes you'll need to do
 `npm run build` then `npm install . -g` if you're wanting to access it without doing `node bin/reactview.js`
 
 ###Todos

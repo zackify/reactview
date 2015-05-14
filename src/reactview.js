@@ -24,31 +24,31 @@ class ReactView{
 
 		this.compiler = webpack({
 			context: __dirname,
-		  entry: fullPath,
-		  output: {
-		       path: __dirname + "/component",
-		       filename: "bundle.js"
-		  },
-		  module: {
-		      loaders: [
-		          {
-		              test: /\.jsx$/,
-		              loader: 'babel-loader?stage=0'
-		          },
-		          {
-		              test: /\.jsx$/,
-		              loader: 'render-placement-loader'
-		          },
-		          { 
-		          	test: /\.css$/,
-		          	loader: "style-loader!css-loader" 
-		          },
+			entry: fullPath,
+			output: {
+					 path: __dirname + "/component",
+					 filename: "bundle.js"
+			},
+			module: {
+					loaders: [
+							{
+									test: /\.jsx$/,
+									loader: 'babel-loader?stage=0'
+							},
+							{
+									test: /\.jsx$/,
+									loader: 'render-placement-loader'
+							},
+							{ 
+								test: /\.css$/,
+								loader: "style-loader!css-loader" 
+							},
 
-		      ]
-		  },
-		  resolve: {
-		      extensions: ['', '.js', '.jsx']
-		  }
+					]
+			},
+			resolve: {
+					extensions: ['', '.js', '.jsx']
+			}
 		})
 
 		this.compile()
@@ -57,18 +57,18 @@ class ReactView{
 
 	compile(){
 		this.compiler.run(function(err, stats) {
-	    if(err)
-	        return console.log(err);
-	    
-	    var jsonStats = stats.toJson();
-	    
-	    if(jsonStats.errors.length > 0)
-	       return console.log(jsonStats.errors);
-	    
-	    if(jsonStats.warnings.length > 0)
-	       console.log(jsonStats.warnings);
-	    	
-	    this.serve()
+			if(err)
+					return console.log(err);
+			
+			var jsonStats = stats.toJson();
+			
+			if(jsonStats.errors.length > 0)
+				 return console.log(jsonStats.errors);
+			
+			if(jsonStats.warnings.length > 0)
+				 console.log(jsonStats.warnings);
+				
+			this.serve()
 		}.bind(this));
 	}
 

@@ -7,16 +7,32 @@ var _createClass = (function () { function defineProperties(target, props) { for
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
+var concat = require('concat-stream');
 var http = require('http');
 var url = require('url');
 var fs = require('fs');
+var tty = require('tty');
 var open = require('open');
 
 var webpack = require('webpack');
 var React = require('react');
 
+function getPropsFromStdin(cb) {
+  if (tty.isatty(process.stdin)) return cb(null, {});
+
+  process.stdin.pipe(concat(function (raw) {
+    try {
+      cb(null, JSON.parse(raw));
+    } catch (e) {
+      cb(e);
+    }
+  }));
+}
+
 var ReactView = (function () {
   function ReactView() {
+    var props = arguments[0] === undefined ? {} : arguments[0];
+
     _classCallCheck(this, ReactView);
 
     var componentPath = process.cwd();
@@ -40,7 +56,8 @@ var ReactView = (function () {
           loader: 'babel-loader?stage=0'
         }, {
           test: /\.jsx$/,
-          loader: 'render-placement-loader'
+          loader: 'render-placement-loader',
+          query: { props: props }
         }, {
           test: /\.css$/,
           loader: 'style-loader!css-loader'
@@ -99,4 +116,7 @@ var ReactView = (function () {
   return ReactView;
 })();
 
-new ReactView();
+getPropsFromStdin(function (err, props) {
+  if (err) throw err;
+  new ReactView(props);
+});

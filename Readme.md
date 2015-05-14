@@ -1,15 +1,5 @@
 ##ReactView
 
-###Recent Changes
-
-**0.4.0**
-
-- Added babel compilation so that reactview plays nice with node (you should be using iojs :P)
-- added css loader
-
-**0.3.1**
-- added babel stage 0 transforms
-
 ##Install
 
 	npm install -g reactview
@@ -47,6 +37,20 @@ No need to add React.render. CSS importing is also included.
 
 To modify reactview, take a look at src/reactview.js. After making changes you'll need to do
 `npm run build` then `npm install . -g` if you're wanting to access it without doing `node bin/reactview.js`
+
+###Recent Changes
+
+**0.4.1**
+
+- optionally pass in props to your component
+
+**0.4.0**
+
+- Added babel compilation so that reactview plays nice with node (you should be using iojs :P)
+- added css loader
+
+**0.3.1**
+- added babel stage 0 transforms
 
 ###Todos
 

@@ -38,7 +38,11 @@ class ReactView{
 		          {
 		              test: /\.jsx$/,
 		              loader: 'render-placement-loader'
-		          }
+		          },
+		          { 
+		          	test: /\.css$/,
+		          	loader: "style-loader!css-loader" 
+		          },
 
 		      ]
 		  },

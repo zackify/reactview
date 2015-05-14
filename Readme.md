@@ -1,5 +1,15 @@
 ##ReactView
 
+###Recent Changes
+
+**0.4.0**
+
+- Added babel compilation so that reactview plays nice with node (you should be using iojs :P)
+- added css loader
+
+**0.3.1**
+- added babel stage 0 transforms
+
 ##Install
 
 	npm install -g reactview
@@ -19,16 +29,22 @@ Optionally, you can specify the port as the second argument: `reactview componen
 The example component looks like:
 
     import React from 'react'
+		import Test from './test.css'
 
-		export default class Woah extends React.Component{
+		class Woah extends React.Component{
 			render(){
-				return <div>this is sick</div>
+				return <div className="test">this is sick</div>
 			}
 		}
 
-No need to add React.render either! But if you have it in there, it'll be replaced to mount on the body.
+No need to add React.render. CSS importing is also included.
+
+##Contributing
+
+To modify reactview, take a look at src/reactview.js. After making changes you'll need to do 
+`npm run build` then `npm install . -g` if you're wanting to access it without doing `node bin/reactview.js`
+
 ###Todos
 
-- ~~remove the need for React.render in your component~~ done!
 - add in hot reloading
 - whatever you send in a pull request

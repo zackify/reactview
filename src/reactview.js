@@ -92,12 +92,12 @@ class ReactView{
         var jsonStats = stats.toJson()
         
         if(jsonStats.errors.length > 0) {
-          console.log(jsonStats.errors)
+          for (var error of jsonStats.errors) console.error(error)
           return reject()
         }
 
         if(jsonStats.warnings.length > 0) {
-          console.log(jsonStats.warnings)
+          for (var warning of jsonStats.warnings) console.warn(warning)
           return reject()
         }
         console.log('Successfully Compiled')

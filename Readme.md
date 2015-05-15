@@ -25,13 +25,13 @@ The example component looks like:
 		import React from 'react'
 		import Test from './test.css'
 
-		class Woah extends React.Component{
+		export default class Woah extends React.Component{
 			render(){
 				return <div className="test">this is sick</div>
 			}
 		}
 
-No need to add React.render. CSS importing is also included.
+No need to add React.render. CSS importing is also included. You need to specify `export default` on the component you want rendered.
 
 ##Contributing
 
@@ -39,6 +39,11 @@ To modify reactview, take a look at src/reactview.js. After making changes you'l
 `npm run build` then `npm install . -g` if you're wanting to access it without doing `node bin/reactview.js`
 
 ###Recent Changes
+
+**0.5.0**
+
+- v2.0 of the render placement loader. You **must** `export default` the component you want to be rendered.
+- fixed error message formatting when compiling your component
 
 **0.4.3**
 
@@ -60,4 +65,6 @@ To modify reactview, take a look at src/reactview.js. After making changes you'l
 ###Todos
 
 - add in hot reloading
+- passing props like `--props {test: 'value'}`
+- display error if component doesn't have a default export
 - whatever you send in a pull request

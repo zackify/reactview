@@ -40,6 +40,11 @@ To modify reactview, take a look at src/reactview.js. After making changes you'l
 
 ###Recent Changes
 
+**0.4.3**
+
+- hot compile the js, you don't have to run reactview when you change your component, just refresh the page
+- updated dependencies
+
 **0.4.1**
 
 - optionally pass in props to your component

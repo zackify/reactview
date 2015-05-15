@@ -17,6 +17,8 @@ var open = require('open');
 var webpack = require('webpack');
 var React = require('react');
 
+require('babel/polyfill');
+
 function getPropsFromStdin(cb) {
   if (tty.isatty(process.stdin)) return cb(null, {});
 
@@ -31,6 +33,8 @@ function getPropsFromStdin(cb) {
 
 var ReactView = (function () {
   function ReactView() {
+    var _this = this;
+
     var props = arguments[0] === undefined ? {} : arguments[0];
 
     _classCallCheck(this, ReactView);
@@ -68,23 +72,44 @@ var ReactView = (function () {
       }
     });
 
-    this.compile();
+    this.compile().then(function () {
+      _this.serve();
+    });
   }
 
   _createClass(ReactView, [{
     key: 'compile',
     value: function compile() {
-      this.compiler.run((function (err, stats) {
-        if (err) return console.log(err);
+      var _this2 = this;
 
-        var jsonStats = stats.toJson();
+      var promise = new Promise(function (resolve, reject) {
 
-        if (jsonStats.errors.length > 0) return console.log(jsonStats.errors);
+        _this2.compiler.watch({ // watch options:
+          aggregateTimeout: 300, // wait so long for more changes
+          poll: true // use polling instead of native watchers
+          // pass a number to set the polling interval
+        }, function (err, stats) {
+          if (err) {
+            console.log(err);
+            return reject();
+          }
 
-        if (jsonStats.warnings.length > 0) console.log(jsonStats.warnings);
+          var jsonStats = stats.toJson();
 
-        this.serve();
-      }).bind(this));
+          if (jsonStats.errors.length > 0) {
+            console.log(jsonStats.errors);
+            return reject();
+          }
+
+          if (jsonStats.warnings.length > 0) {
+            console.log(jsonStats.warnings);
+            return reject();
+          }
+          console.log('Successfully Compiled');
+          return resolve(true);
+        });
+      });
+      return promise;
     }
   }, {
     key: 'serve',
@@ -95,6 +120,7 @@ var ReactView = (function () {
 
         if (location == '/bundle.js') {
           fs.readFile(this.bundle, function (error, content) {
+            console.log('loading');
             if (error) {
               res.writeHead(500);
               res.end();

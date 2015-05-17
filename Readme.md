@@ -37,37 +37,13 @@ No need to add React.render. CSS importing is also included.
 
 You need to specify `export default` on the component you want rendered. 
 In 0.5.2, you can explicitly pass the component / class name you want
-rendered: `reactview component.tsx ComponentName`. 
+rendered: `reactview component.jsx ComponentName`. 
 Useful if you're importing components and there are multiple exports.
 
 ##Contributing
 
 To modify reactview, take a look at src/reactview.js. After making changes you'll need to do
 `npm run build` then `npm install . -g` if you're wanting to access it without doing `node bin/reactview.js`
-
-###Recent Changes
-
-**0.5.0**
-
-- v2.0 of the render placement loader. You **must** `export default` the component you want to be rendered.
-- fixed error message formatting when compiling your component
-
-**0.4.3**
-
-- hot compile the js, you don't have to run reactview when you change your component, just refresh the page
-- updated dependencies
-
-**0.4.1**
-
-- optionally pass in props to your component
-
-**0.4.0**
-
-- Added babel compilation so that reactview plays nice with node (you should be using iojs :P)
-- added css loader
-
-**0.3.1**
-- added babel stage 0 transforms
 
 ###Todos
 

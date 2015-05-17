@@ -31,7 +31,14 @@ The example component looks like:
 			}
 		}
 
-No need to add React.render. CSS importing is also included. You need to specify `export default` on the component you want rendered.
+No need to add React.render. CSS importing is also included. 
+
+**How do I set what gets rendered?**
+
+You need to specify `export default` on the component you want rendered. 
+In 0.5.2, you can explicitly pass the component / class name you want
+rendered: `reactview component.tsx ComponentName`. 
+Useful if you're importing components and there are multiple exports.
 
 ##Contributing
 

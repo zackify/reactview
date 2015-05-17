@@ -33,8 +33,16 @@ class ReactView{
     var componentPath = process.cwd()
     var componentName = process.argv[2]
     var fullPath = `${componentPath}/${componentName}`
+    this.port = 1337
+    //if the 3rd argument isn't a number, it is the component class name
+    if(isNaN(process.argv[3]) && process.argv[3]){
+      var component = process.argv[3]
+      //if they also passed a port
+      if(process.argv[4]) this.port = process.argv[4]
+    }
+    //if the 3rd argument is a number, it's the port
+    else if(!isNaN(process.argv[3])) this.port = process.argv[3]
 
-    this.port = process.argv[3] || 1337
     this.fullPath = fullPath
     this.bundle = `${__dirname}/component/bundle.js`
 
@@ -54,7 +62,7 @@ class ReactView{
               {
                   test: /\.jsx$/,
                   loader: 'render-placement-loader',
-                  query: { props: props }
+                  query: { props: props, component: component || '' }
               },
               { 
                 test: /\.css$/,

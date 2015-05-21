@@ -47,7 +47,7 @@ To modify reactview, take a look at src/reactview.js. After making changes you'l
 
 ###Todos
 
-- add in hot reloading
 - passing props like `--props {test: 'value'}`
+- allow .js files to be compiled (only .jsx is supported now)
 - display error if component doesn't have a default export
 - whatever you send in a pull request

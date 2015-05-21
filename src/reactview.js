@@ -7,9 +7,9 @@ var http = require('http')
 var url = require('url')
 var fs = require('fs')
 var tty = require('tty');
-var open = require("open");
 
 var webpack = require('webpack')
+var WebpackDevServer =require('webpack-dev-server')
 var React = require('react')
 
 require('babel/polyfill')
@@ -48,13 +48,17 @@ class ReactView{
 
     this.compiler = webpack({
       context: __dirname,
-      entry: fullPath,
+      entry: ['webpack/hot/dev-server',fullPath],
       output: {
-           path: __dirname + "/component",
+           path: __dirname,
            filename: "bundle.js"
       },
       module: {
           loaders: [
+              {
+                test: /\.jsx$/,
+                loader: 'react-hot'
+              },
               {
                   test: /\.jsx$/,
                   loader: 'babel-loader?stage=0'
@@ -73,12 +77,20 @@ class ReactView{
       },
       resolve: {
           extensions: ['', '.js', '.jsx']
-      }
+      },
+      plugins: [
+        new webpack.HotModuleReplacementPlugin()
+      ]
     })
 
     this.compile()
     .then(() => {
-      this.serve()
+      try{
+        this.serve()
+      }
+      catch(e){
+        console.error(e)
+      }
     })
 
   }
@@ -117,30 +129,18 @@ class ReactView{
   }
 
   serve(){
-    http.createServer(function (req, res) {
+    var server = new WebpackDevServer(this.compiler, {
+      contentBase: __dirname,
+      hot: true,
+      quiet: false,
+      noInfo: false,
+      lazy: true,
+      filename: "bundle.js",
+      watchDelay: 300,
+    });
+    server.listen(this.port, "localhost", function() {});
 
-      var location = url.parse(req.url,true).pathname
-
-      if(location == '/bundle.js'){
-        fs.readFile(this.bundle, function(error, content) {
-          console.log('loading')
-          if (error) {
-            res.writeHead(500);
-            res.end();
-          }
-          else {
-            res.writeHead(200, { 'Content-Type': 'text/javascript' });
-            res.end(content, 'utf-8');
-          }
-        });
-      }
-      else {
-        res.writeHead(200, {'Content-Type': 'text/html; charset=UTF-8'});
-        res.end('<html><head><title>React View</title></head><body><script src="/bundle.js"></script></body></html>')
-      }
-    }.bind(this)).listen(this.port);
-    open('http://localhost:'+ this.port);
-    console.log('running!')
+    console.log(`running on http://localhost:${this.port}`)
   }
 }
 

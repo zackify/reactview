@@ -1,6 +1,6 @@
 {
   "name": "reactview",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "compile and view react components (with hot reloading!)",
   "main": "bin/index.js",
   "keywords": [

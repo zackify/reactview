@@ -64,15 +64,18 @@ var ReactView = (function () {
       },
       module: {
         loaders: [{
-          test: /\.jsx$/,
-          loader: 'react-hot'
+          test: /\.jsx?$/,
+          loader: 'react-hot',
+          exclude: /node_modules/
         }, {
-          test: /\.jsx$/,
-          loader: 'babel-loader?stage=0'
+          test: /\.jsx?$/,
+          loader: 'babel-loader?stage=0',
+          exclude: /node_modules/
         }, {
-          test: /\.jsx$/,
+          test: /\.jsx?$/,
           loader: 'render-placement-loader',
-          query: { props: props, component: component || '' }
+          query: { props: props, component: component || '' },
+          exclude: /node_modules/
         }, {
           test: /\.css$/,
           loader: 'style-loader!css-loader'

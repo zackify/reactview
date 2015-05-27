@@ -64,19 +64,23 @@ var ReactView = (function () {
       },
       module: {
         loaders: [{
+          context: __dirname,
           test: /\.jsx?$/,
           loader: 'react-hot',
           exclude: /node_modules/
         }, {
+          context: __dirname,
           test: /\.jsx?$/,
           loader: 'babel-loader?stage=0',
           exclude: /node_modules/
         }, {
+          context: __dirname,
           test: /\.jsx?$/,
           loader: 'render-placement-loader',
           query: { props: props, component: component || '' },
           exclude: /node_modules/
         }, {
+          context: __dirname,
           test: /\.css$/,
           loader: 'style-loader!css-loader'
         }]

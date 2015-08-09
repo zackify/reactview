@@ -1,3 +1,7 @@
+##No longer maintained
+
+**Go use [heatpack](https://github.com/insin/react-heatpack), it does the same thing.**
+
 ##ReactView
 
 ##Install
